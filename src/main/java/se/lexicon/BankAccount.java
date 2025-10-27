@@ -1,6 +1,5 @@
 package se.lexicon;
 
-import javax.swing.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
