@@ -89,8 +89,8 @@ public class BankAccount {
     /**
      * Withdraws money from balance
      *
-     * @param amount amount to withdraw(must be non negative and >0 balance value)
-     * @throws IllegalArgumentException if amount is invalid
+     * @param amount amount to withdraw (must be non-negative and >0 balance value)
+     * @throws IllegalArgumentException if "amount" is invalid
      */
 
     public void withdraw(double amount) {
