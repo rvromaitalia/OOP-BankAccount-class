@@ -77,7 +77,15 @@ class BankAccountTest {
     }
 
     @Test
-    void deposit() {
+    void deposit_negative_amount() {
+        var ex = assertThrows(IllegalArgumentException.class, ()->bankAccount.deposit(-10.5));
+        assertEquals("Amount can not be 0 or 'negative'",ex.getMessage());
+    }
+
+    @Test
+    void deposit_amount_normal_case() {
+        bankAccount.deposit(5000);
+        assertEquals(BigDecimal.valueOf(5000).setScale(2), bankAccount.getBalance());
     }
 
     @Test

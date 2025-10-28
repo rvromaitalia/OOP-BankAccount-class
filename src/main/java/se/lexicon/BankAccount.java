@@ -69,12 +69,6 @@ public class BankAccount {
         this.email = email;
     }
 
-    private void requiresGreaterThanZero(double amount) {
-        if (!Double.isFinite(amount) || amount <= 0.0) {
-            throw new IllegalArgumentException("Amount can not be 0 or 'negative'");
-        }
-    }
-
     /**
      * Adds money to the account.
      *
@@ -83,7 +77,8 @@ public class BankAccount {
      */
     public void deposit(double amount) {
         requiresGreaterThanZero(amount);
-        this.setBalance(getBalance().add(BigDecimal.valueOf(amount)));
+        var val = norm(BigDecimal.valueOf(amount));
+        this.setBalance(getBalance().add(val));
     }
 
     /**
@@ -100,8 +95,18 @@ public class BankAccount {
         boolean sufficient = (getBalance().compareTo(normalizedAmount) >= 0);
         if (sufficient){
             balance = balance.subtract(normalizedAmount);
-    }   else {
-        System.out.println("Your don't have enough money to complete this transaction");
+        }   else {
+        System.out.println("You don't have enough money to complete this transaction");
+        }
     }
-}
+    //Helper methods
+    private static BigDecimal norm(BigDecimal x) {
+        return x.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    private void requiresGreaterThanZero(double amount) {
+        if (!Double.isFinite(amount) || amount <= 0.0) {
+            throw new IllegalArgumentException("Amount can not be 0 or 'negative'");
+        }
+    }
 }
