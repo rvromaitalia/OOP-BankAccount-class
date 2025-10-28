@@ -11,8 +11,8 @@ public class BankAccount {
     private String phoneNumber;
     private int accountCounter = 0;
 
-    public BankAccount(String acName, String cName, BigDecimal balance, String email, String pNumber) {
-        this.accountNumber = acName;
+    public BankAccount(String accName, String cName, BigDecimal balance, String email, String pNumber) {
+        this.accountNumber = accName;
         this.customerName = cName;
         this.balance = balance;
         this.email = email;
